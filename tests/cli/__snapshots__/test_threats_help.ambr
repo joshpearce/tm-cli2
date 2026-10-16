@@ -1,0 +1,171 @@
+# serializer version: 1
+# name: test_help_snapshots[create]
+  '''
+  Usage: cli threat create [OPTIONS]
+  
+    Create a threat record.
+  
+  Options:
+    --title TEXT
+    --scenario TEXT
+    --rating [low|medium|high]
+    --description TEXT
+    --mitre-reference TEXT
+    --observed-mitigations TEXT
+    --recommendations TEXT
+    --threat-catalog-id INTEGER
+    --stdin
+    --dry-run
+    --help                       Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[delete]
+  '''
+  Usage: cli threat delete [OPTIONS] THREAT_ID
+  
+    Delete a threat (idempotent).
+  
+  Options:
+    --yes
+    --dry-run
+    --help     Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[get]
+  '''
+  Usage: cli threat get [OPTIONS] THREAT_ID
+  
+    Fetch a threat by id.
+  
+  Options:
+    --json FIELDS  Comma-separated field names to include in output.
+    --help         Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[group]
+  '''
+  Usage: cli threat [OPTIONS] COMMAND [ARGS]...
+  
+    Manage threat assessment records.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  Commands:
+    create              Create a threat record.
+    delete              Delete a threat (idempotent).
+    get                 Fetch a threat by id.
+    link-entity         Link a threat to a DFD entity (idempotent).
+    link-observation    Link a threat to an observation (idempotent).
+    list                List threats.
+    search              Search threats by text; combine with rating filter.
+    unlink-entity       Unlink a threat from a DFD entity.
+    unlink-observation  Unlink a threat from an observation.
+    update              Apply a partial update to a threat.
+  
+  '''
+# ---
+# name: test_help_snapshots[link-entity]
+  '''
+  Usage: cli threat link-entity [OPTIONS] THREAT_ID ENTITY_ID
+  
+    Link a threat to a DFD entity (idempotent).
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[link-observation]
+  '''
+  Usage: cli threat link-observation [OPTIONS] THREAT_ID OBSERVATION_ID
+  
+    Link a threat to an observation (idempotent).
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list]
+  '''
+  Usage: cli threat list [OPTIONS]
+  
+    List threats.
+  
+  Options:
+    --order [asc|desc]          Sort direction.  [default: asc]
+    --sort FIELD                Column to sort by.  [default: id]
+    --offset INTEGER RANGE      Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE       Maximum rows to return.  [default: 50;
+                                1<=x<=10000]
+    --rating [low|medium|high]  Filter by threat rating.
+    --json FIELDS               Comma-separated field names to include in output.
+    --help                      Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[search]
+  '''
+  Usage: cli threat search [OPTIONS] [TEXT]...
+  
+    Search threats by text; combine with rating filter.
+  
+  Options:
+    --order [asc|desc]          Sort direction.  [default: asc]
+    --sort FIELD                Column to sort by.  [default: id]
+    --offset INTEGER RANGE      Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE       Maximum rows to return.  [default: 50;
+                                1<=x<=10000]
+    --rating [low|medium|high]  Filter by threat rating.
+    --json FIELDS               Comma-separated field names to include in output.
+    --help                      Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[unlink-entity]
+  '''
+  Usage: cli threat unlink-entity [OPTIONS] THREAT_ID ENTITY_ID
+  
+    Unlink a threat from a DFD entity.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[unlink-observation]
+  '''
+  Usage: cli threat unlink-observation [OPTIONS] THREAT_ID OBSERVATION_ID
+  
+    Unlink a threat from an observation.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[update]
+  '''
+  Usage: cli threat update [OPTIONS] THREAT_ID
+  
+    Apply a partial update to a threat.
+  
+  Options:
+    --title TEXT
+    --scenario TEXT
+    --rating [low|medium|high]
+    --description TEXT
+    --mitre-reference TEXT
+    --observed-mitigations TEXT
+    --recommendations TEXT
+    --threat-catalog-id INTEGER
+    --stdin
+    --dry-run
+    --help                       Show this message and exit.
+  
+  '''
+# ---

@@ -1,0 +1,108 @@
+# serializer version: 1
+# name: test_create_with_named_flags_returns_new_row
+  dict({
+    'author': 'Test Author',
+    'content': 'Test content body',
+    'id': '1',
+    'last_imported': '<DATETIME>',
+    'last_updated': '<DATETIME>',
+    'title': 'Test Doc',
+  })
+# ---
+# name: test_get_returns_full_object_with_content
+  dict({
+    'author': 'seeder',
+    'content': 'Seeded document body 1.',
+    'id': '1',
+    'last_imported': '<DATETIME>',
+    'last_updated': '<DATETIME>',
+    'title': 'Seed Doc 1',
+  })
+# ---
+# name: test_list_returns_ndjson_when_piped
+  list([
+    dict({
+      'author': 'seeder',
+      'id': '1',
+      'last_imported': '<DATETIME>',
+      'last_updated': '<DATETIME>',
+      'title': 'Seed Doc 1',
+    }),
+    dict({
+      'author': 'seeder',
+      'id': '2',
+      'last_imported': '<DATETIME>',
+      'last_updated': '<DATETIME>',
+      'title': 'Seed Doc 2',
+    }),
+  ])
+# ---
+# name: test_search_case_insensitive_single_token
+  list([
+    dict({
+      'author': 'seeder',
+      'id': '1',
+      'last_imported': '<DATETIME>',
+      'last_updated': '<DATETIME>',
+      'title': 'Seed Doc 1',
+    }),
+    dict({
+      'author': 'seeder',
+      'id': '2',
+      'last_imported': '<DATETIME>',
+      'last_updated': '<DATETIME>',
+      'title': 'Seed Doc 2',
+    }),
+  ])
+# ---
+# name: test_search_multi_token_and
+  list([
+    dict({
+      'author': 'seeder',
+      'id': '1',
+      'last_imported': '<DATETIME>',
+      'last_updated': '<DATETIME>',
+      'title': 'Seed Doc 1',
+    }),
+  ])
+# ---
+# name: test_stdin_array_creates_n_rows_in_order
+  list([
+    dict({
+      'author': 'a',
+      'content': 'c1',
+      'id': '1',
+      'last_imported': '<DATETIME>',
+      'last_updated': '<DATETIME>',
+      'title': 'First',
+    }),
+    dict({
+      'author': 'b',
+      'content': 'c2',
+      'id': '2',
+      'last_imported': '<DATETIME>',
+      'last_updated': '<DATETIME>',
+      'title': 'Second',
+    }),
+  ])
+# ---
+# name: test_stdin_single_object_creates_one_row
+  dict({
+    'author': 'agent',
+    'content': '...body...',
+    'id': '1',
+    'last_imported': '<DATETIME>',
+    'last_updated': '<DATETIME>',
+    'title': 'ViaStdin',
+  })
+# ---
+# name: test_update_returns_full_row
+  dict({
+    'author': 'seeder',
+    'content': 'Seeded document body 1.',
+    'id': '1',
+    'last_imported': '<DATETIME>',
+    'last_updated': '<DATETIME>',
+    'title': 'Updated Title',
+  })
+# ---

@@ -1,0 +1,34 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tm-cli"
+version = "0.1.0"
+description = "A CLI tool"
+requires-python = ">=3.11"
+dependencies = [
+    "click==8.4.0",
+    "pydantic==2.13.4",
+    "python-dotenv==1.2.2",
+]
+
+[project.scripts]
+tm = "tm_cli.main:cli"
+
+[dependency-groups]
+dev = [
+    "ruff==0.15.13",
+    "pytest==8.4.2",
+    "syrupy==4.9.1",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,233 @@
+# serializer version: 1
+# name: test_help_snapshots[create]
+  '''
+  Usage: cli data-item create [OPTIONS]
+  
+    Create a data item. Use named flags or --stdin.
+  
+  Options:
+    --identifier TEXT               Data item identifier.
+    --name TEXT                     Data item name.
+    --description TEXT              Data item description.
+    --classification [unclassified|pii|secret|public|internal]
+                                    Data item classification.
+    --parent-node-id INTEGER        Parent node id (optional).
+    --stdin                         Read JSON object or array from stdin instead
+                                    of named flags.
+    --if-not-exists                 No-op for DataItem (identifier not unique);
+                                    kept for consistency.
+    --dry-run                       Dry-run.
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[delete]
+  '''
+  Usage: cli data-item delete [OPTIONS] ITEM_ID
+  
+    Delete a data item.
+  
+  Options:
+    --yes      Skip confirmation prompt.
+    --dry-run  Dry-run.
+    --help     Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[get]
+  '''
+  Usage: cli data-item get [OPTIONS] ITEM_ID
+  
+    Get a data item by id.
+  
+  Options:
+    --json FIELDS  Comma-separated field names to include in output.
+    --help         Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[group]
+  '''
+  Usage: cli data-item [OPTIONS] COMMAND [ARGS]...
+  
+    Manage DFD data items.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  Commands:
+    create              Create a data item.
+    delete              Delete a data item.
+    get                 Get a data item by id.
+    link-document       Link a document to this data item.
+    link-observation    Link an observation to this data item.
+    list                List data items in a diagram (defaults to the...
+    list-documents      List documents linked to this data item.
+    list-flows          List flows that carry this data item (on either...
+    list-observations   List observations linked to this data item.
+    search              Search data items by identifier, name, or description.
+    unlink-document     Remove a document↔data-item link.
+    unlink-observation  Remove an observation↔data-item link.
+    update              Update a data item.
+  
+  '''
+# ---
+# name: test_help_snapshots[link-document]
+  '''
+  Usage: cli data-item link-document [OPTIONS] ITEM_ID DOC_ID
+  
+    Link a document to this data item. Idempotent.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[link-observation]
+  '''
+  Usage: cli data-item link-observation [OPTIONS] ITEM_ID OBS_ID
+  
+    Link an observation to this data item. Idempotent.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-documents]
+  '''
+  Usage: cli data-item list-documents [OPTIONS] ITEM_ID
+  
+    List documents linked to this data item.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-flows]
+  '''
+  Usage: cli data-item list-flows [OPTIONS] ITEM_ID
+  
+    List flows that carry this data item (on either endpoint).
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-observations]
+  '''
+  Usage: cli data-item list-observations [OPTIONS] ITEM_ID
+  
+    List observations linked to this data item.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list]
+  '''
+  Usage: cli data-item list [OPTIONS]
+  
+    List data items in a diagram (defaults to the 'default' diagram).
+  
+  Options:
+    --order [asc|desc]              Sort direction.  [default: asc]
+    --sort FIELD                    Column to sort by.  [default: id]
+    --offset INTEGER RANGE          Rows to skip from the start.  [default: 0;
+                                    x>=0]
+    --limit INTEGER RANGE           Maximum rows to return.  [default: 50;
+                                    1<=x<=10000]
+    --classification [unclassified|pii|secret|public|internal]
+                                    Filter to data items with this classification.
+    --parent-node-id TEXT           Filter to data items whose parent_node_id
+                                    equals this integer.
+    --json FIELDS                   Comma-separated field names to include in
+                                    output.
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[search]
+  '''
+  Usage: cli data-item search [OPTIONS] [TEXT]...
+  
+    Search data items by identifier, name, or description.
+  
+  Options:
+    --order [asc|desc]              Sort direction.  [default: asc]
+    --sort FIELD                    Column to sort by.  [default: id]
+    --offset INTEGER RANGE          Rows to skip from the start.  [default: 0;
+                                    x>=0]
+    --limit INTEGER RANGE           Maximum rows to return.  [default: 50;
+                                    1<=x<=10000]
+    --classification [unclassified|pii|secret|public|internal]
+                                    Filter to data items with this classification.
+    --parent-node-id TEXT           Filter to data items whose parent_node_id
+                                    equals this integer.
+    --json FIELDS                   Comma-separated field names to include in
+                                    output.
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[unlink-document]
+  '''
+  Usage: cli data-item unlink-document [OPTIONS] ITEM_ID DOC_ID
+  
+    Remove a document↔data-item link. Idempotent.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[unlink-observation]
+  '''
+  Usage: cli data-item unlink-observation [OPTIONS] ITEM_ID OBS_ID
+  
+    Remove an observation↔data-item link. Idempotent.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[update]
+  '''
+  Usage: cli data-item update [OPTIONS] ITEM_ID
+  
+    Update a data item.
+  
+  Options:
+    --identifier TEXT               Data item identifier.
+    --name TEXT                     Data item name.
+    --description TEXT              Data item description.
+    --classification [unclassified|pii|secret|public|internal]
+                                    Data item classification.
+    --parent-node-id TEXT           Set parent node id, or 'none'/'' to clear
+                                    (NULL).
+    --stdin                         Read JSON object from stdin instead of named
+                                    flags.
+    --dry-run                       Dry-run.
+    --help                          Show this message and exit.
+  
+  '''
+# ---

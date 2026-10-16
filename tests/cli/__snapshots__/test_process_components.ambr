@@ -1,0 +1,149 @@
+# serializer version: 1
+# name: test_create_dry_run
+  dict({
+    'dry_run': True,
+    'would_create': dict({
+      'component_type': 'service',
+      'description': 'This should not be persisted',
+      'name': 'dry-run-component',
+      'parent_process_id': '1',
+    }),
+  })
+# ---
+# name: test_create_returns_new_component
+  dict({
+    'component_type': 'handler',
+    'description': 'A new component',
+    'diagram_id': '1',
+    'id': '11',
+    'name': 'new-component',
+    'parent_process_id': '1',
+  })
+# ---
+# name: test_create_stdin_batch
+  list([
+    dict({
+      'component_type': 'controller',
+      'description': 'First batch component',
+      'diagram_id': '1',
+      'id': '11',
+      'name': 'batch-component-1',
+      'parent_process_id': '1',
+    }),
+    dict({
+      'component_type': 'service',
+      'description': 'Second batch component',
+      'diagram_id': '1',
+      'id': '12',
+      'name': 'batch-component-2',
+      'parent_process_id': '1',
+    }),
+  ])
+# ---
+# name: test_get_returns_component
+  dict({
+    'component_type': 'controller',
+    'description': 'A seeded controller component.',
+    'id': '9',
+    'name': 'seed-controller',
+    'parent_process_id': '1',
+  })
+# ---
+# name: test_list_filtered_by_component_type
+  list([
+    dict({
+      'component_type': 'controller',
+      'description': 'A seeded controller component.',
+      'id': '9',
+      'name': 'seed-controller',
+      'parent_process_id': '1',
+    }),
+  ])
+# ---
+# name: test_list_filtered_by_component_type_and_parent_process
+  list([
+    dict({
+      'component_type': 'service',
+      'description': 'A seeded service component.',
+      'id': '10',
+      'name': 'seed-service',
+      'parent_process_id': '1',
+    }),
+  ])
+# ---
+# name: test_list_filtered_by_parent_process_id
+  list([
+    dict({
+      'component_type': 'controller',
+      'description': 'A seeded controller component.',
+      'id': '9',
+      'name': 'seed-controller',
+      'parent_process_id': '1',
+    }),
+    dict({
+      'component_type': 'service',
+      'description': 'A seeded service component.',
+      'id': '10',
+      'name': 'seed-service',
+      'parent_process_id': '1',
+    }),
+  ])
+# ---
+# name: test_list_returns_seeded_components
+  list([
+    dict({
+      'component_type': 'controller',
+      'description': 'A seeded controller component.',
+      'id': '9',
+      'name': 'seed-controller',
+      'parent_process_id': '1',
+    }),
+    dict({
+      'component_type': 'service',
+      'description': 'A seeded service component.',
+      'id': '10',
+      'name': 'seed-service',
+      'parent_process_id': '1',
+    }),
+  ])
+# ---
+# name: test_search_matches_name
+  list([
+    dict({
+      'component_type': 'controller',
+      'description': 'A seeded controller component.',
+      'id': '9',
+      'name': 'seed-controller',
+      'parent_process_id': '1',
+    }),
+  ])
+# ---
+# name: test_search_with_component_type_filter
+  list([
+    dict({
+      'component_type': 'service',
+      'description': 'A seeded service component.',
+      'id': '10',
+      'name': 'seed-service',
+      'parent_process_id': '1',
+    }),
+  ])
+# ---
+# name: test_set_parent
+  dict({
+    'component_type': 'controller',
+    'description': 'A seeded controller component.',
+    'id': '9',
+    'name': 'seed-controller',
+    'parent_process_id': '11',
+  })
+# ---
+# name: test_update_returns_updated
+  dict({
+    'component_type': 'service',
+    'description': 'A seeded controller component.',
+    'id': '9',
+    'name': 'updated-controller',
+    'parent_process_id': '1',
+  })
+# ---

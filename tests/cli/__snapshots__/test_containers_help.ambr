@@ -1,0 +1,312 @@
+# serializer version: 1
+# name: test_help_snapshots[clear-parent]
+  '''
+  Usage: cli container clear-parent [OPTIONS] CONTAINER_ID
+  
+    Clear the parent of ``container_id``.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[create-container]
+  '''
+  Usage: cli container create container [OPTIONS]
+  
+    Create a generic container.
+  
+  Options:
+    --name TEXT
+    --description TEXT
+    --stdin
+    --if-not-exists     No-op for Container (no natural key); kept for command-
+                        shape consistency.
+    --dry-run
+    --help              Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[create-trust-boundary]
+  '''
+  Usage: cli container create trust-boundary [OPTIONS]
+  
+    Create a trust boundary.
+  
+  Options:
+    --name TEXT
+    --description TEXT
+    --privilege-level [internet|dmz|corporate|restricted]
+    --stdin
+    --if-not-exists                 No-op for Container (no natural key); kept for
+                                    command-shape consistency.
+    --dry-run
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[create]
+  '''
+  Usage: cli container create [OPTIONS] COMMAND [ARGS]...
+  
+    Create a container of a specific variant.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  Commands:
+    container       Create a generic container.
+    trust-boundary  Create a trust boundary.
+  
+  '''
+# ---
+# name: test_help_snapshots[delete]
+  '''
+  Usage: cli container delete [OPTIONS] CONTAINER_ID
+  
+  Options:
+    --yes      Skip confirmation prompt.
+    --dry-run
+    --help     Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[get]
+  '''
+  Usage: cli container get [OPTIONS] CONTAINER_ID
+  
+  Options:
+    --json FIELDS  Comma-separated field names to include in output.
+    --help         Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[group]
+  '''
+  Usage: cli container [OPTIONS] COMMAND [ARGS]...
+  
+    Manage DFD containers (trust_boundary, container).
+  
+  Options:
+    --help  Show this message and exit.
+  
+  Commands:
+    clear-parent        Clear the parent of ``container_id``.
+    create              Create a container of a specific variant.
+    delete
+    get
+    link-document       Link a document to this container.
+    link-observation    Link an observation to this container.
+    list
+    list-children       List Nodes and Containers under ``container_id``...
+    list-documents      List documents linked to this container.
+    list-observations   List observations linked to this container.
+    parent-of           Get the parent container of ``container_id``.
+    search
+    set-parent          Place ``container_id`` inside the container...
+    unlink-document     Remove a document↔container link.
+    unlink-observation  Remove an observation↔container link.
+    update              Update a container of a specific variant.
+  
+  '''
+# ---
+# name: test_help_snapshots[link-document]
+  '''
+  Usage: cli container link-document [OPTIONS] CONTAINER_ID DOC_ID
+  
+    Link a document to this container. Idempotent.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[link-observation]
+  '''
+  Usage: cli container link-observation [OPTIONS] CONTAINER_ID OBS_ID
+  
+    Link an observation to this container. Idempotent.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-children]
+  '''
+  Usage: cli container list-children [OPTIONS] CONTAINER_ID
+  
+    List Nodes and Containers under ``container_id`` (heterogeneous output).
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-documents]
+  '''
+  Usage: cli container list-documents [OPTIONS] CONTAINER_ID
+  
+    List documents linked to this container.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-observations]
+  '''
+  Usage: cli container list-observations [OPTIONS] CONTAINER_ID
+  
+    List observations linked to this container.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list]
+  '''
+  Usage: cli container list [OPTIONS]
+  
+  Options:
+    --order [asc|desc]              Sort direction.  [default: asc]
+    --sort FIELD                    Column to sort by.  [default: id]
+    --offset INTEGER RANGE          Rows to skip from the start.  [default: 0;
+                                    x>=0]
+    --limit INTEGER RANGE           Maximum rows to return.  [default: 50;
+                                    1<=x<=10000]
+    --type [trust_boundary|container]
+                                    Filter to a single container variant.
+    --json FIELDS                   Comma-separated field names to include in
+                                    output.
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[parent-of]
+  '''
+  Usage: cli container parent-of [OPTIONS] CONTAINER_ID
+  
+    Get the parent container of ``container_id``.
+  
+  Options:
+    --json FIELDS  Comma-separated field names to include in output.
+    --help         Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[search]
+  '''
+  Usage: cli container search [OPTIONS] [TEXT]...
+  
+  Options:
+    --order [asc|desc]              Sort direction.  [default: asc]
+    --sort FIELD                    Column to sort by.  [default: id]
+    --offset INTEGER RANGE          Rows to skip from the start.  [default: 0;
+                                    x>=0]
+    --limit INTEGER RANGE           Maximum rows to return.  [default: 50;
+                                    1<=x<=10000]
+    --type [trust_boundary|container]
+    --json FIELDS                   Comma-separated field names to include in
+                                    output.
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[set-parent]
+  '''
+  Usage: cli container set-parent [OPTIONS] CONTAINER_ID PARENT_ID
+  
+    Place ``container_id`` inside the container ``parent_id``.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[unlink-document]
+  '''
+  Usage: cli container unlink-document [OPTIONS] CONTAINER_ID DOC_ID
+  
+    Remove a document↔container link. Idempotent.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[unlink-observation]
+  '''
+  Usage: cli container unlink-observation [OPTIONS] CONTAINER_ID OBS_ID
+  
+    Remove an observation↔container link. Idempotent.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[update-container]
+  '''
+  Usage: cli container update container [OPTIONS] CONTAINER_ID
+  
+    Update a generic container.
+  
+  Options:
+    --name TEXT
+    --description TEXT
+    --stdin
+    --dry-run
+    --help              Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[update-trust-boundary]
+  '''
+  Usage: cli container update trust-boundary [OPTIONS] CONTAINER_ID
+  
+    Update a trust boundary.
+  
+  Options:
+    --name TEXT
+    --description TEXT
+    --privilege-level [internet|dmz|corporate|restricted]
+    --stdin
+    --dry-run
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[update]
+  '''
+  Usage: cli container update [OPTIONS] COMMAND [ARGS]...
+  
+    Update a container of a specific variant.
+  
+    The variant must match the row's existing type.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  Commands:
+    container       Update a generic container.
+    trust-boundary  Update a trust boundary.
+  
+  '''
+# ---

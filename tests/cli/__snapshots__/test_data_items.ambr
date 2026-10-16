@@ -1,0 +1,88 @@
+# serializer version: 1
+# name: test_create_with_named_flags_in_seeded_diagram
+  dict({
+    'classification': 'unclassified',
+    'description': 'A new item',
+    'diagram_id': '1',
+    'id': '11',
+    'identifier': 'new-item',
+    'name': 'new-item',
+    'parent_node_id': None,
+  })
+# ---
+# name: test_get_returns_item
+  dict({
+    'classification': 'pii',
+    'description': 'seeded data item',
+    'id': '7',
+    'identifier': 'seed-item-1',
+    'name': 'item-with-parent',
+    'parent_node_id': '1',
+  })
+# ---
+# name: test_list_filtered_by_classification
+  list([
+    dict({
+      'classification': 'pii',
+      'description': 'seeded data item',
+      'id': '7',
+      'identifier': 'seed-item-1',
+      'name': 'item-with-parent',
+      'parent_node_id': '1',
+    }),
+  ])
+# ---
+# name: test_list_filtered_by_classification_and_parent_node
+  list([
+    dict({
+      'classification': 'pii',
+      'description': 'seeded data item',
+      'id': '7',
+      'identifier': 'seed-item-1',
+      'name': 'item-with-parent',
+      'parent_node_id': '1',
+    }),
+  ])
+# ---
+# name: test_list_filtered_by_parent_node_id
+  list([
+    dict({
+      'classification': 'pii',
+      'description': 'seeded data item',
+      'id': '7',
+      'identifier': 'seed-item-1',
+      'name': 'item-with-parent',
+      'parent_node_id': '1',
+    }),
+  ])
+# ---
+# name: test_list_returns_seeded_items
+  list([
+    dict({
+      'classification': 'pii',
+      'description': 'seeded data item',
+      'id': '7',
+      'identifier': 'seed-item-1',
+      'name': 'item-with-parent',
+      'parent_node_id': '1',
+    }),
+    dict({
+      'classification': 'public',
+      'description': 'seeded data item',
+      'id': '8',
+      'identifier': 'seed-item-2',
+      'name': 'item-without-parent',
+      'parent_node_id': None,
+    }),
+  ])
+# ---
+# name: test_update_returns_full_row
+  dict({
+    'classification': 'pii',
+    'description': 'seeded data item',
+    'id': '7',
+    'identifier': 'seed-item-1',
+    'name': 'updated-name',
+    'parent_node_id': '1',
+  })
+# ---

@@ -1,0 +1,125 @@
+# serializer version: 1
+# name: test_help_snapshots[create]
+  '''
+  Usage: cli term create [OPTIONS]
+  
+    Create a term, optionally idempotent on the ``term`` natural key.
+  
+  Options:
+    --term TEXT
+    --definition TEXT
+    --stdin
+    --if-not-exists    Use natural-key lookup (term) for idempotent create.
+    --dry-run
+    --help             Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[delete]
+  '''
+  Usage: cli term delete [OPTIONS] TERM_ID
+  
+    Delete a term (idempotent).
+  
+  Options:
+    --yes
+    --dry-run
+    --help     Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[get]
+  '''
+  Usage: cli term get [OPTIONS] TERM_ID
+  
+    Fetch a term by id.
+  
+  Options:
+    --json FIELDS  Comma-separated field names to include in output.
+    --help         Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[group]
+  '''
+  Usage: cli term [OPTIONS] COMMAND [ARGS]...
+  
+    Manage glossary terms.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  Commands:
+    create          Create a term, optionally idempotent on the ``term``...
+    delete          Delete a term (idempotent).
+    get             Fetch a term by id.
+    list            List all terms.
+    list-documents  List documents linked to a term.
+    search          Full-text search across term and definition.
+    update          Apply a partial update to a term.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-documents]
+  '''
+  Usage: cli term list-documents [OPTIONS] TERM_ID
+  
+    List documents linked to a term.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list]
+  '''
+  Usage: cli term list [OPTIONS]
+  
+    List all terms.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[search]
+  '''
+  Usage: cli term search [OPTIONS] TEXT
+  
+    Full-text search across term and definition.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[update]
+  '''
+  Usage: cli term update [OPTIONS] TERM_ID
+  
+    Apply a partial update to a term.
+  
+  Options:
+    --term TEXT
+    --definition TEXT
+    --stdin
+    --dry-run
+    --help             Show this message and exit.
+  
+  '''
+# ---

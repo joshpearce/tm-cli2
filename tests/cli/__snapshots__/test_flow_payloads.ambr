@@ -1,0 +1,126 @@
+# serializer version: 1
+# name: test_add_payload_already_present_returns_already_linked
+  dict({
+    'data_item_id': '7',
+    'endpoint': 1,
+    'flow_id': '6',
+    'from_node_id': '1',
+    'linked': False,
+    'reason': 'already_linked',
+  })
+# ---
+# name: test_add_payload_cross_diagram_exits_1
+  dict({
+    'error': dict({
+      'code': 'user_error',
+      'message': 'flow and data_item must belong to the same diagram',
+    }),
+  })
+# ---
+# name: test_add_payload_endpoint_1
+  dict({
+    'data_item_id': '7',
+    'endpoint': 1,
+    'flow_id': '6',
+    'from_node_id': '1',
+    'linked': True,
+  })
+# ---
+# name: test_add_payload_endpoint_2_after_endpoint_1_round_trips
+  list([
+    dict({
+      'classification': 'pii',
+      'description': 'seeded data item',
+      'id': '7',
+      'identifier': 'seed-item-1',
+      'name': 'item-with-parent',
+      'parent_node_id': '1',
+    }),
+    dict({
+      'classification': 'public',
+      'description': 'seeded data item',
+      'id': '8',
+      'identifier': 'seed-item-2',
+      'name': 'item-without-parent',
+      'parent_node_id': None,
+    }),
+  ])
+# ---
+# name: test_add_payload_endpoint_2_after_endpoint_1_round_trips.1
+  list([
+    dict({
+      'classification': 'pii',
+      'description': 'seeded data item',
+      'id': '7',
+      'identifier': 'seed-item-1',
+      'name': 'item-with-parent',
+      'parent_node_id': '1',
+    }),
+  ])
+# ---
+# name: test_add_payload_using_non_data_item_id_exits_1
+  dict({
+    'error': dict({
+      'code': 'user_error',
+      'message': 'data_item_id 1 is not a data_item',
+    }),
+  })
+# ---
+# name: test_data_item_list_flows_for_missing_item_exits_2
+  dict({
+    'error': dict({
+      'code': 'not_found',
+      'id': '99999',
+      'message': 'DataItem id=99999 not found',
+    }),
+  })
+# ---
+# name: test_data_item_list_flows_returns_carrying_flow
+  dict({
+    'authenticated': True,
+    'encrypted': True,
+    'id': '6',
+    'name': 'seed-flow',
+    'node1_id': '1',
+    'node2_id': '3',
+    'protocol': 'HTTPS',
+  })
+# ---
+# name: test_list_payloads_filtered_by_endpoint
+  dict({
+    'classification': 'public',
+    'description': 'seeded data item',
+    'id': '8',
+    'identifier': 'seed-item-2',
+    'name': 'item-without-parent',
+    'parent_node_id': None,
+  })
+# ---
+# name: test_list_payloads_for_missing_flow_exits_2
+  dict({
+    'error': dict({
+      'code': 'not_found',
+      'id': '99999',
+      'message': 'DataFlow id=99999 not found',
+    }),
+  })
+# ---
+# name: test_remove_payload_returns_unlinked_true
+  dict({
+    'data_item_id': '7',
+    'endpoint': 1,
+    'flow_id': '6',
+    'from_node_id': '1',
+    'unlinked': True,
+  })
+# ---
+# name: test_remove_payload_when_absent_returns_not_linked
+  dict({
+    'data_item_id': '7',
+    'endpoint': 1,
+    'flow_id': '6',
+    'from_node_id': '1',
+    'reason': 'not_linked',
+    'unlinked': False,
+  })
+# ---

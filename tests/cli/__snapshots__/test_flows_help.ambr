@@ -1,0 +1,241 @@
+# serializer version: 1
+# name: test_help_snapshots[add-payload]
+  '''
+  Usage: cli flow add-payload [OPTIONS] FLOW_ID
+  
+    Attach a data item to a flow as sourced at a specific node.
+  
+  Options:
+    --data-item INTEGER  DataItem id to attach as a payload.  [required]
+    --from INTEGER       Node id this data item is sourced at (must be node1 or
+                         node2 of the flow).  [required]
+    --help               Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[create]
+  '''
+  Usage: cli flow create [OPTIONS]
+  
+    Create a data flow. Endpoints are canonicalized (lower id first).
+  
+  Options:
+    --node1-id INTEGER
+    --node2-id INTEGER
+    --name TEXT
+    --protocol TEXT
+    --authenticated / --no-authenticated
+    --encrypted / --no-encrypted
+    --stdin
+    --if-not-exists
+    --dry-run
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[delete]
+  '''
+  Usage: cli flow delete [OPTIONS] FLOW_ID
+  
+  Options:
+    --yes
+    --dry-run
+    --help     Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[get]
+  '''
+  Usage: cli flow get [OPTIONS] FLOW_ID
+  
+  Options:
+    --json FIELDS  Comma-separated field names to include in output.
+    --help         Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[group]
+  '''
+  Usage: cli flow [OPTIONS] COMMAND [ARGS]...
+  
+    Manage DFD data flows.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  Commands:
+    add-payload         Attach a data item to a flow as sourced at a specific...
+    create              Create a data flow.
+    delete
+    get
+    link-document       Link a document to this flow.
+    link-observation    Link an observation to this flow.
+    list
+    list-documents      List documents linked to this flow.
+    list-observations   List observations linked to this flow.
+    list-payloads       List data items attached to a flow.
+    remove-payload      Detach a data item from a flow at a specific source...
+    search              Full-text search across DataFlow name and protocol.
+    unlink-document     Remove a document↔flow link.
+    unlink-observation  Remove an observation↔flow link.
+    update              Update a data flow's metadata.
+  
+  '''
+# ---
+# name: test_help_snapshots[link-document]
+  '''
+  Usage: cli flow link-document [OPTIONS] FLOW_ID DOC_ID
+  
+    Link a document to this flow. Idempotent.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[link-observation]
+  '''
+  Usage: cli flow link-observation [OPTIONS] FLOW_ID OBS_ID
+  
+    Link an observation to this flow. Idempotent.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-documents]
+  '''
+  Usage: cli flow list-documents [OPTIONS] FLOW_ID
+  
+    List documents linked to this flow.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-observations]
+  '''
+  Usage: cli flow list-observations [OPTIONS] FLOW_ID
+  
+    List observations linked to this flow.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-payloads]
+  '''
+  Usage: cli flow list-payloads [OPTIONS] FLOW_ID
+  
+    List data items attached to a flow.
+  
+  Options:
+    --endpoint [1|2]        Filter to payloads on a specific endpoint.
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list]
+  '''
+  Usage: cli flow list [OPTIONS]
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[remove-payload]
+  '''
+  Usage: cli flow remove-payload [OPTIONS] FLOW_ID
+  
+    Detach a data item from a flow at a specific source node.
+  
+  Options:
+    --data-item INTEGER  [required]
+    --from INTEGER       Node id this data item is sourced at (must be node1 or
+                         node2 of the flow).  [required]
+    --help               Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[search]
+  '''
+  Usage: cli flow search [OPTIONS] [TEXT]...
+  
+    Full-text search across DataFlow name and protocol.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[unlink-document]
+  '''
+  Usage: cli flow unlink-document [OPTIONS] FLOW_ID DOC_ID
+  
+    Remove a document↔flow link. Idempotent.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[unlink-observation]
+  '''
+  Usage: cli flow unlink-observation [OPTIONS] FLOW_ID OBS_ID
+  
+    Remove an observation↔flow link. Idempotent.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[update]
+  '''
+  Usage: cli flow update [OPTIONS] FLOW_ID
+  
+    Update a data flow's metadata.
+  
+    Endpoints (node1_id/node2_id) are immutable. Delete and recreate to change
+    them.
+  
+  Options:
+    --name TEXT
+    --protocol TEXT
+    --authenticated / --no-authenticated
+    --encrypted / --no-encrypted
+    --stdin
+    --dry-run
+    --help                          Show this message and exit.
+  
+  '''
+# ---

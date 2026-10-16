@@ -1,0 +1,54 @@
+# serializer version: 1
+# name: test_get_returns_entry_with_tactics
+  dict({
+    'description': 'Adversaries may use valid accounts to gain access.',
+    'id': '1',
+    'mitre_id': 'T1078',
+    'name': 'Valid Accounts',
+    'platforms': 'Windows, Linux, macOS',
+    'tactics': list([
+      'initial-access',
+      'persistence',
+    ]),
+  })
+# ---
+# name: test_list_returns_seeded_entries
+  list([
+    dict({
+      'description': 'Adversaries may use valid accounts to gain access.',
+      'id': '1',
+      'mitre_id': 'T1078',
+      'name': 'Valid Accounts',
+      'platforms': 'Windows, Linux, macOS',
+      'tactics': list([
+        'initial-access',
+        'persistence',
+      ]),
+    }),
+    dict({
+      'description': 'Adversaries may exploit public-facing applications.',
+      'id': '2',
+      'mitre_id': 'T1190',
+      'name': 'Exploit Public-Facing Application',
+      'platforms': 'Windows, Linux, Containers',
+      'tactics': list([
+        'initial-access',
+      ]),
+    }),
+  ])
+# ---
+# name: test_search_returns_matching_entries
+  list([
+    dict({
+      'description': 'Adversaries may use valid accounts to gain access.',
+      'id': '1',
+      'mitre_id': 'T1078',
+      'name': 'Valid Accounts',
+      'platforms': 'Windows, Linux, macOS',
+      'tactics': list([
+        'initial-access',
+        'persistence',
+      ]),
+    }),
+  ])
+# ---

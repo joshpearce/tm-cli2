@@ -1,0 +1,136 @@
+# serializer version: 1
+# name: test_create_batch_via_stdin
+  list([
+    dict({
+      'code': None,
+      'created': '<DATETIME>',
+      'diagram_id': '1',
+      'entity_id': None,
+      'id': '1',
+      'message': 'batch error',
+      'severity': 'error',
+      'source': 'linter',
+    }),
+    dict({
+      'code': None,
+      'created': '<DATETIME>',
+      'diagram_id': '1',
+      'entity_id': None,
+      'id': '2',
+      'message': 'batch warning',
+      'severity': 'warning',
+      'source': 'linter',
+    }),
+  ])
+# ---
+# name: test_create_minimal
+  dict({
+    'code': None,
+    'created': '<DATETIME>',
+    'diagram_id': '1',
+    'entity_id': None,
+    'id': '1',
+    'message': 'test msg',
+    'severity': 'error',
+    'source': 'linter',
+  })
+# ---
+# name: test_create_via_stdin
+  dict({
+    'code': None,
+    'created': '<DATETIME>',
+    'diagram_id': '1',
+    'entity_id': None,
+    'id': '1',
+    'message': 'stdin finding',
+    'severity': 'error',
+    'source': 'scanner',
+  })
+# ---
+# name: test_create_with_entity_id_and_code
+  dict({
+    'code': 'TM-001',
+    'created': '<DATETIME>',
+    'diagram_id': '1',
+    'entity_id': '1',
+    'id': '1',
+    'message': 'missing trust boundary',
+    'severity': 'warning',
+    'source': 'analyzer',
+  })
+# ---
+# name: test_delete_existing
+  dict({
+    'deleted': True,
+    'id': '1',
+  })
+# ---
+# name: test_delete_not_found
+  dict({
+    'deleted': False,
+    'id': '9999',
+    'reason': 'not_found',
+  })
+# ---
+# name: test_get_found
+  dict({
+    'code': None,
+    'created': '<DATETIME>',
+    'diagram_id': '1',
+    'entity_id': None,
+    'id': '1',
+    'message': 'get me',
+    'severity': 'error',
+    'source': 'linter',
+  })
+# ---
+# name: test_list_returns_findings
+  list([
+    dict({
+      'code': None,
+      'created': '<DATETIME>',
+      'diagram_id': '1',
+      'entity_id': None,
+      'id': '1',
+      'message': 'finding 0',
+      'severity': 'error',
+      'source': 'linter',
+    }),
+    dict({
+      'code': None,
+      'created': '<DATETIME>',
+      'diagram_id': '1',
+      'entity_id': None,
+      'id': '2',
+      'message': 'finding 1',
+      'severity': 'error',
+      'source': 'linter',
+    }),
+  ])
+# ---
+# name: test_search_by_message
+  list([
+    dict({
+      'code': None,
+      'created': '<DATETIME>',
+      'diagram_id': '1',
+      'entity_id': None,
+      'id': '1',
+      'message': 'injection vulnerability detected',
+      'severity': 'error',
+      'source': 'linter',
+    }),
+  ])
+# ---
+# name: test_update_severity
+  dict({
+    'code': None,
+    'created': '<DATETIME>',
+    'diagram_id': '1',
+    'entity_id': None,
+    'id': '1',
+    'message': 'original message',
+    'severity': 'warning',
+    'source': 'linter',
+  })
+# ---

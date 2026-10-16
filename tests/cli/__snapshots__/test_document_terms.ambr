@@ -1,0 +1,31 @@
+# serializer version: 1
+# name: test_link_term_creates_link
+  dict({
+    'doc_id': '1',
+    'linked': True,
+    'term_id': '1',
+  })
+# ---
+# name: test_list_terms_returns_ndjson
+  list([
+    dict({
+      'definition': 'definition 1',
+      'id': '1',
+      'last_updated': '<DATETIME>',
+      'term': 'seed-term-1',
+    }),
+    dict({
+      'definition': 'definition 2',
+      'id': '2',
+      'last_updated': '<DATETIME>',
+      'term': 'seed-term-2',
+    }),
+  ])
+# ---
+# name: test_unlink_term_removes_link
+  dict({
+    'doc_id': '1',
+    'term_id': '1',
+    'unlinked': True,
+  })
+# ---

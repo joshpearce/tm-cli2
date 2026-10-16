@@ -1,0 +1,11 @@
+# serializer version: 1
+# name: test_entity_get_resolves_process_component
+  dict({
+    'component_type': 'controller',
+    'description': 'A seeded controller component.',
+    'id': '9',
+    'kind': 'process_component',
+    'name': 'seed-controller',
+    'parent_process_id': '1',
+  })
+# ---

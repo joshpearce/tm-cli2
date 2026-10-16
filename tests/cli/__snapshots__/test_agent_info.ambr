@@ -1,0 +1,208 @@
+# serializer version: 1
+# name: test_agent_info_prints_orientation_snapshot
+  '''
+  # tm — agent orientation
+  
+  ## Purpose
+  
+  `tm` is a SQLite-backed threat-model database. A security researcher hands you
+  design documents (architecture docs, RFCs, runbooks, ADRs); you ingest them and
+  build up a threat model: a glossary of domain terms, a Data Flow Diagram (DFD)
+  of nodes/containers/flows/data-items, and a backlog of observations (open
+  questions, suspected threats, todos).
+  
+  The CLI is the agent surface. Stdout is JSON (NDJSON for lists); stderr is a
+  single JSON error envelope. Run `tm commands` for the full Click tree and
+  `tm schema <entity>` for the Pydantic JSON Schema of any entity. Use
+  `tm <command> --help` for human-readable per-command help.
+  
+  ## The per-document loop
+  
+  For every document the researcher gives you, run these steps in order.
+  
+  1. **Import the document.**
+     `tm document create --title ... --author ... --content ... --last-updated ...`
+     (or pipe a JSON object to `--stdin`). Capture the returned `id` — you will
+     link entities back to it.
+  
+  2. **Update the glossary.**
+     Skim for domain terms that need definitions. For each:
+     `tm term create --term X --definition Y --if-not-exists`, then
+     `tm document link-term <doc_id> <term_id>`. If a later document refines a
+     term you already created, use `tm term update` to revise the definition.
+     Search before creating: `tm term search "..."`.
+  
+  3. **Extract design entities.** Pick the right kind for each thing the document
+     describes, then `tm <entity> link-document <entity_id> <doc_id>` so the
+     model can be traced back to source.
+     - actors, users, third-party services, devices →
+       `tm node create external-entity --name ... --description ... --entity-type <type>`
+       (entity-type ∈ {'user', 'service', 'system', 'device'})
+     - services, functions, anything that processes data →
+       `tm node create process --name ... --description ... --trust-level <level>`
+       (trust-level ∈ {'public', 'authenticated', 'admin', 'system'}, optional repeated `--assumption "..."`)
+     - internal classes, services, controllers within a process →
+       `tm process-component create --name ... --description ... \`
+       `  --component-type <type> --parent-process-id <process_id>`
+       (component-type ∈ {'controller', 'service', 'filter', 'repository', 'utility', 'client', 'handler', 'interceptor', 'configuration'}; informational — flows
+       remain at the process-node level)
+     - databases, caches, queues, file stores, buckets →
+       `tm node create data-store --name ... --description ... \`
+       `  --storage-type <type> --contains-pii/--no-contains-pii \`
+       `  --encryption-at-rest/--no-encryption-at-rest`
+       (storage-type ∈ {'database', 'cache', 'file', 'queue', 'bucket'})
+     - security perimeters →
+       `tm container create trust-boundary --name ... --description ... \`
+       `  --privilege-level <level>`
+       (privilege-level ∈ {'internet', 'dmz', 'corporate', 'restricted'})
+     - logical groupings (deployment unit, module, subsystem) →
+       `tm container create container --name ... --description ...`
+     - sensitive data fields →
+       `tm data-item create --identifier ... --name ... --description ... \`
+       `  --classification <class>`
+       (classification ∈ {'unclassified', 'pii', 'secret', 'public', 'internal'}; pass
+       `--parent-node-id <data_store_id>` when the item lives in a specific store)
+     - communications between two nodes →
+       `tm flow create --node1-id ... --node2-id ... --name ... --protocol ... \`
+       `  --authenticated/--no-authenticated --encrypted/--no-encrypted`
+     - attach data items to a flow at one endpoint →
+       `tm flow add-payload <flow_id> --data-item <item_id> --from <node_id>`
+       (if `<node_id>` isn't one of the flow's two endpoints, the error
+       response includes both valid node ids in its `hint` field so a
+       retry doesn't need a separate `flow get`)
+     - place nodes/containers inside a container →
+       `tm node set-parent <node_id> <container_id>` /
+       `tm container set-parent <container_id> <parent_id>`
+  
+     Use `--if-not-exists` on creates and search first
+     (`tm node search`, `tm flow search`, etc.) so re-imports don't duplicate.
+  
+  4. **Record observations.** Anything you can't yet answer, anything that smells
+     like a threat, anything you want to revisit:
+     `tm observation create --content "..." --observation-type <type>`
+     (observation-type ∈ {'potential_threat', 'incomplete_information', 'question', 'todo'}). New observations default
+     to status `'open'`; close with
+     `tm observation update <id> --status closed` (status ∈
+     {'open', 'closed'}). Search before creating:
+     `tm observation search "..." --observation-type ... --status open`.
+  
+     Link observations to DFD entities so you can trace which entities a finding
+     applies to:
+     `tm <kind> link-observation <entity_id> <obs_id>` /
+     `tm <kind> unlink-observation <entity_id> <obs_id>`
+     where `<kind>` is one of `node`, `container`, `flow`, `data-item`, or
+     `process-component`.
+     Every `tm observation get <obs_id>` result includes five id-list fields —
+     `node_ids`, `container_ids`, `flow_ids`, `data_item_ids`,
+     `process_component_ids` — each defaulting to `[]`. Reverse lookups:
+     `tm observation list-nodes <obs_id>`, `list-containers`, `list-flows`,
+     `list-items`, `list-process-components` (full entity rows).
+     `tm <kind> list-observations <entity_id>` lists all observations on one entity.
+  
+     To resolve a linked entity id without knowing its kind in advance, use
+     `tm entity get <id>` — it returns the full payload plus a top-level `"kind"`
+     field. Typical agent flow: `tm observation get O` → read e.g. `flow_ids[0]`
+     → `tm entity get <that_id>` → full `DataFlow` payload with
+     `"kind": "data_flow"`.
+  
+  5. **Record validation findings.** When you detect errors or warnings in the
+     model (missing encryption, undocumented trust boundaries, incomplete
+     coverage), record them as structured findings:
+     `tm finding create --diagram-id <id> --severity <sev> \`
+     `  --message "..." --source <tool_name>`
+     (severity ∈ {'error', 'warning'}). Optionally attach a finding to a
+     specific entity with `--entity-id <id>` and a machine-readable code with
+     `--code <code>`. Use `--stdin` for batch create.
+  
+     Findings are metadata, not DFD elements — they don't appear in `tm entity get`
+     and are scoped to a diagram. List/filter with `tm finding list --severity ...
+     --source ...` or `tm finding search "<text>"`. Update with
+     `tm finding update <id> --severity ... --message ...`. Clear all findings from
+     a source with `tm finding clear --source <tool_name>` (or omit `--source` to
+     clear all).
+  
+     When you push with `tm diagram push`, entity-level findings are included in
+     the `"validation"` array with GUIDs matching their target elements. The push
+     output includes `error_count` and `warning_count` fields.
+  
+  6. **Revise.** Periodically run `tm node list`, `tm container list`,
+     `tm flow list`, `tm data-item list` to review the current DFD. Rename or
+     retype as understanding improves. Note: a flow's endpoints
+     (`node1_id`, `node2_id`) are immutable — to change them, delete and
+     recreate.
+  
+  7. **Sync the DFD to dfd_editor (optional).**
+     When you have a running dfd_editor server, push the current diagram so a
+     human can view/edit the layout: `tm diagram push --server <url>`
+     (or set `DFD_EDITOR_URL`). Re-running is idempotent — element UUIDs are
+     stable, so dfd_editor-side layout survives re-pushes.
+  
+  ## Domain quick reference
+  
+  Enum values that constrain the API (enforced at both the Pydantic and SQL
+  layers):
+  
+  - Observation types: 'potential_threat', 'incomplete_information', 'question', 'todo'
+  - Observation status: 'open', 'closed'
+  - Node types (discriminator): 'process', 'external_entity', 'data_store'
+  - Trust levels (process nodes): 'public', 'authenticated', 'admin', 'system'
+  - External entity types: 'user', 'service', 'system', 'device'
+  - Storage types (data_store nodes): 'database', 'cache', 'file', 'queue', 'bucket'
+  - Container types (discriminator): 'trust_boundary', 'container'
+  - Privilege levels (trust boundaries): 'internet', 'dmz', 'corporate', 'restricted'
+  - Data classifications: 'unclassified', 'pii', 'secret', 'public', 'internal'
+  - Component types (process components): 'controller', 'service', 'filter', 'repository', 'utility', 'client', 'handler', 'interceptor', 'configuration'
+  - Finding severity: 'error', 'warning'
+  
+  ## Usage patterns
+  
+  - Output is JSON when stdout is piped, NDJSON for lists. A trailing
+    `{"_pagination": {"next_offset": ..., "returned": ...}}` line on a list
+    means more rows are available — pass `--offset` to page.
+  - Every `id` and `*_id` field is a JSON **string**, even though storage uses
+    INTEGER PKs. Don't assume numeric ids on the wire.
+  - Errors print one JSON object on stderr. Exit codes are stable:
+    1 = user_error, 2 = not_found, 3 = constraint_violation, 4 = system_error.
+  - Use `--stdin` to send one JSON object or an array (batch) for create/update.
+    Mutually exclusive with named flags.
+  - Use `--if-not-exists` on `create` for idempotent insert on natural keys
+    (e.g. `term.term`, observation content).
+  - Use `--dry-run` on create/update/delete to validate without writing.
+  - DFD entity `--name` values must be **lower-kebab-case**
+    (`^[a-z][a-z0-9]*(-[a-z0-9]+)*$`, max 128 chars) — e.g. `auth-service`, not
+    `Auth Service` or `AuthController`. Applies to diagrams, nodes, containers,
+    flows, data-items, and process-components; a non-conforming name is a
+    `user_error` (exit 1). Free-text fields (`--description`, `--protocol`,
+    document titles, term names) are unconstrained.
+  - DFD entities (`node`, `container`, `flow`, `data-item`) share a hidden
+    `--diagram-id`. When unset, `$TM_DIAGRAM_ID` is consulted next (set it once
+    in your shell to avoid repeating `--diagram-id` on every command); if that is
+    also unset, a diagram named `default` is used (auto-created on the first
+    mutation). Pass `--diagram-id` only when working with multiple diagrams.
+  - Use `--id-only` (root flag) to emit only bare entity ids on stdout — one id
+    per line for list output, a single id for single-row results; the
+    `_pagination` footer is suppressed. For payloads without a bare `id` field
+    (e.g. `tm diagram push` returns `diagram_id`), the first `*_id`-suffixed
+    field is used instead. Wins over `--json` when both are set; falls back to
+    normal JSON for non-id-bearing payloads (e.g. `tm schema`). Useful for
+    shell capture: `$(tm --id-only diagram create --name foo)`.
+    Idempotent deletes echo the requested id whether or not the row existed;
+    rely on the JSON form (drop `--id-only`) when you need to disambiguate.
+  - Standard list/search options: `--limit` (1..10000, default 50), `--offset`
+    (≥0), `--sort FIELD`, `--order asc|desc`, `--json FIELDS` for field
+    projection.
+  - Search before create: every entity exposes `tm <entity> search "<text>"`
+    with the same filters as `list`.
+  
+  ## Discovery
+  
+  - `tm commands` — full Click tree as JSON (groups, options, arguments, choices,
+    hidden flags).
+  - `tm schema [<entity>] [--all]` — Pydantic JSON Schema for read/create/update
+    models. Entities: document, term, observation, diagram, node, container,
+    flow, data-item, finding.
+  - `tm <command> --help` — human-readable per-command help.
+  
+  
+  '''
+# ---

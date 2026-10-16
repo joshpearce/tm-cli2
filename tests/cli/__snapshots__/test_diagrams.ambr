@@ -1,0 +1,53 @@
+# serializer version: 1
+# name: test_create_no_args_creates_unnamed_diagram
+  dict({
+    'author': None,
+    'created': '<DATETIME>',
+    'description': None,
+    'dfd_editor_diagram_id': None,
+    'id': '1',
+    'name': None,
+  })
+# ---
+# name: test_create_returns_new_diagram
+  dict({
+    'author': None,
+    'created': '<DATETIME>',
+    'description': 'A fresh diagram',
+    'dfd_editor_diagram_id': None,
+    'id': '1',
+    'name': 'fresh',
+  })
+# ---
+# name: test_get_returns_diagram
+  dict({
+    'author': 'seeder',
+    'created': '<DATETIME>',
+    'description': 'seed diagram',
+    'dfd_editor_diagram_id': None,
+    'id': '1',
+    'name': 'non-default',
+  })
+# ---
+# name: test_list_returns_seeded_diagram
+  list([
+    dict({
+      'author': 'seeder',
+      'created': '<DATETIME>',
+      'description': 'seed diagram',
+      'dfd_editor_diagram_id': None,
+      'id': '1',
+      'name': 'non-default',
+    }),
+  ])
+# ---
+# name: test_update_returns_updated_diagram
+  dict({
+    'author': 'seeder',
+    'created': '<DATETIME>',
+    'description': 'new description',
+    'dfd_editor_diagram_id': None,
+    'id': '1',
+    'name': 'non-default',
+  })
+# ---

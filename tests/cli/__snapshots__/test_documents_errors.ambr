@@ -1,0 +1,64 @@
+# serializer version: 1
+# name: test_create_missing_required_field_exits_1
+  dict({
+    'error': dict({
+      'code': 'user_error',
+      'message': '--title, --author, and --content are required (or use --stdin)',
+    }),
+  })
+# ---
+# name: test_get_missing_id_exits_2_not_found
+  dict({
+    'error': dict({
+      'code': 'not_found',
+      'id': '9999',
+      'message': 'Document id=9999 not found',
+    }),
+  })
+# ---
+# name: test_search_with_empty_text_exits_1
+  dict({
+    'error': dict({
+      'code': 'user_error',
+      'message': "search requires a non-empty TEXT argument; use 'tm document list' for unfiltered output",
+    }),
+  })
+# ---
+# name: test_stdin_combined_with_named_flag_exits_1_user_error
+  dict({
+    'error': dict({
+      'code': 'user_error',
+      'message': '--stdin cannot be combined with named flags: --title',
+    }),
+  })
+# ---
+# name: test_stdin_invalid_item_in_array_rolls_back_batch
+  dict({
+    'error': dict({
+      'code': 'user_error',
+      'input': dict({
+        'index': 1,
+        'item': dict({
+          'author': 'a',
+          'content': 'c',
+          'last_updated': '<DATETIME>',
+        }),
+      }),
+      'message': '''
+        1 validation error for DocumentCreate
+        title
+          Field required [type=missing, input_value={'last_updated': '2026-01...r': 'a', 'content': 'c'}, input_type=dict]
+            For further information visit https://errors.pydantic.dev/2.13/v/missing
+      ''',
+    }),
+  })
+# ---
+# name: test_update_missing_id_exits_2_not_found
+  dict({
+    'error': dict({
+      'code': 'not_found',
+      'id': '9999',
+      'message': 'Document id=9999 not found',
+    }),
+  })
+# ---

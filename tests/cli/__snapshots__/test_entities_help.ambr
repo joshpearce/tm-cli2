@@ -1,0 +1,27 @@
+# serializer version: 1
+# name: test_help_snapshots[get]
+  '''
+  Usage: cli entity get [OPTIONS] ENTITY_ID
+  
+    Fetch a DFD entity (any kind) by id, with a ``kind`` discriminator.
+  
+  Options:
+    --json FIELDS  Comma-separated field names to include in output.
+    --help         Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[group]
+  '''
+  Usage: cli entity [OPTIONS] COMMAND [ARGS]...
+  
+    Kind-agnostic DFD entity resolver.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  Commands:
+    get  Fetch a DFD entity (any kind) by id, with a ``kind`` discriminator.
+  
+  '''
+# ---

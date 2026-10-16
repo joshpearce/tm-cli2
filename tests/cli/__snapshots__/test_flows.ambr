@@ -1,0 +1,116 @@
+# serializer version: 1
+# name: test_create_canonicalizes_endpoints_when_n1_gt_n2
+  dict({
+    'authenticated': False,
+    'diagram_id': '1',
+    'encrypted': False,
+    'id': '11',
+    'name': 'test-canonicalize',
+    'node1_id': '1',
+    'node2_id': '3',
+    'protocol': 'HTTP',
+  })
+# ---
+# name: test_create_cross_diagram_exits_1
+  dict({
+    'error': dict({
+      'code': 'user_error',
+      'message': 'Endpoint 11 is not in diagram 1',
+    }),
+  })
+# ---
+# name: test_create_self_loop_exits_1_with_hint
+  dict({
+    'error': dict({
+      'code': 'user_error',
+      'message': 'Self-loops are not allowed',
+    }),
+  })
+# ---
+# name: test_get_missing_id_exits_2
+  dict({
+    'error': dict({
+      'code': 'not_found',
+      'id': '99999',
+      'message': 'DataFlow id=99999 not found',
+    }),
+  })
+# ---
+# name: test_get_returns_full_flow
+  dict({
+    'authenticated': True,
+    'encrypted': True,
+    'id': '6',
+    'name': 'seed-flow',
+    'node1_id': '1',
+    'node2_id': '3',
+    'protocol': 'HTTPS',
+  })
+# ---
+# name: test_list_returns_seeded_flow
+  list([
+    dict({
+      'authenticated': True,
+      'encrypted': True,
+      'id': '6',
+      'name': 'seed-flow',
+      'node1_id': '1',
+      'node2_id': '3',
+      'protocol': 'HTTPS',
+    }),
+  ])
+# ---
+# name: test_search_matches_name
+  list([
+    dict({
+      'authenticated': True,
+      'encrypted': True,
+      'id': '6',
+      'name': 'seed-flow',
+      'node1_id': '1',
+      'node2_id': '3',
+      'protocol': 'HTTPS',
+    }),
+  ])
+# ---
+# name: test_search_matches_protocol
+  list([
+    dict({
+      'authenticated': True,
+      'encrypted': True,
+      'id': '6',
+      'name': 'seed-flow',
+      'node1_id': '1',
+      'node2_id': '3',
+      'protocol': 'HTTPS',
+    }),
+  ])
+# ---
+# name: test_update_missing_id_exits_2
+  dict({
+    'error': dict({
+      'code': 'not_found',
+      'id': '99999',
+      'message': 'DataFlow id=99999 not found',
+    }),
+  })
+# ---
+# name: test_update_returns_full_row
+  dict({
+    'authenticated': True,
+    'encrypted': False,
+    'id': '6',
+    'name': 'seed-flow',
+    'node1_id': '1',
+    'node2_id': '3',
+    'protocol': 'HTTPS',
+  })
+# ---
+# name: test_update_stdin_with_node1_id_in_body_rejected
+  dict({
+    'error': dict({
+      'code': 'user_error',
+      'message': 'Endpoints are immutable on DataFlow. Delete and recreate to swap node1_id/node2_id.',
+    }),
+  })
+# ---

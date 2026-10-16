@@ -1,0 +1,273 @@
+# serializer version: 1
+# name: test_create_with_named_flags
+  dict({
+    'container_ids': list([
+    ]),
+    'content': 'Review authentication',
+    'data_item_ids': list([
+    ]),
+    'flow_ids': list([
+    ]),
+    'id': '1',
+    'last_updated': '<DATETIME>',
+    'node_ids': list([
+    ]),
+    'observation_type': 'todo',
+    'process_component_ids': list([
+    ]),
+    'status': 'open',
+  })
+# ---
+# name: test_get_returns_full_observation
+  dict({
+    'container_ids': list([
+    ]),
+    'content': 'Seed observation 1',
+    'data_item_ids': list([
+    ]),
+    'flow_ids': list([
+    ]),
+    'id': '1',
+    'last_updated': '<DATETIME>',
+    'node_ids': list([
+    ]),
+    'observation_type': 'todo',
+    'process_component_ids': list([
+    ]),
+    'status': 'open',
+  })
+# ---
+# name: test_list_filtered_by_status
+  list([
+    dict({
+      'container_ids': list([
+      ]),
+      'content': 'Seed observation 1',
+      'data_item_ids': list([
+      ]),
+      'flow_ids': list([
+      ]),
+      'id': '1',
+      'last_updated': '<DATETIME>',
+      'node_ids': list([
+      ]),
+      'observation_type': 'todo',
+      'process_component_ids': list([
+      ]),
+      'status': 'open',
+    }),
+    dict({
+      'container_ids': list([
+      ]),
+      'content': 'Seed observation 2',
+      'data_item_ids': list([
+      ]),
+      'flow_ids': list([
+      ]),
+      'id': '2',
+      'last_updated': '<DATETIME>',
+      'node_ids': list([
+      ]),
+      'observation_type': 'todo',
+      'process_component_ids': list([
+      ]),
+      'status': 'open',
+    }),
+  ])
+# ---
+# name: test_list_filtered_by_type_returns_subset
+  list([
+    dict({
+      'container_ids': list([
+      ]),
+      'content': 'Fix the bug',
+      'data_item_ids': list([
+      ]),
+      'flow_ids': list([
+      ]),
+      'id': '1',
+      'last_updated': '<DATETIME>',
+      'node_ids': list([
+      ]),
+      'observation_type': 'todo',
+      'process_component_ids': list([
+      ]),
+      'status': 'open',
+    }),
+  ])
+# ---
+# name: test_list_returns_all_seeded_observations
+  list([
+    dict({
+      'container_ids': list([
+      ]),
+      'content': 'Seed observation 1',
+      'data_item_ids': list([
+      ]),
+      'flow_ids': list([
+      ]),
+      'id': '1',
+      'last_updated': '<DATETIME>',
+      'node_ids': list([
+      ]),
+      'observation_type': 'todo',
+      'process_component_ids': list([
+      ]),
+      'status': 'open',
+    }),
+    dict({
+      'container_ids': list([
+      ]),
+      'content': 'Seed observation 2',
+      'data_item_ids': list([
+      ]),
+      'flow_ids': list([
+      ]),
+      'id': '2',
+      'last_updated': '<DATETIME>',
+      'node_ids': list([
+      ]),
+      'observation_type': 'todo',
+      'process_component_ids': list([
+      ]),
+      'status': 'open',
+    }),
+  ])
+# ---
+# name: test_search_case_insensitive
+  list([
+    dict({
+      'container_ids': list([
+      ]),
+      'content': 'Seed observation 1',
+      'data_item_ids': list([
+      ]),
+      'flow_ids': list([
+      ]),
+      'id': '1',
+      'last_updated': '<DATETIME>',
+      'node_ids': list([
+      ]),
+      'observation_type': 'todo',
+      'process_component_ids': list([
+      ]),
+      'status': 'open',
+    }),
+    dict({
+      'container_ids': list([
+      ]),
+      'content': 'Seed observation 2',
+      'data_item_ids': list([
+      ]),
+      'flow_ids': list([
+      ]),
+      'id': '2',
+      'last_updated': '<DATETIME>',
+      'node_ids': list([
+      ]),
+      'observation_type': 'todo',
+      'process_component_ids': list([
+      ]),
+      'status': 'open',
+    }),
+  ])
+# ---
+# name: test_search_empty_text_with_filters_matches_list_shape
+  list([
+    dict({
+      'container_ids': list([
+      ]),
+      'content': 'Seed observation 1',
+      'data_item_ids': list([
+      ]),
+      'flow_ids': list([
+      ]),
+      'id': '1',
+      'last_updated': '<DATETIME>',
+      'node_ids': list([
+      ]),
+      'observation_type': 'todo',
+      'process_component_ids': list([
+      ]),
+      'status': 'open',
+    }),
+    dict({
+      'container_ids': list([
+      ]),
+      'content': 'Seed observation 2',
+      'data_item_ids': list([
+      ]),
+      'flow_ids': list([
+      ]),
+      'id': '2',
+      'last_updated': '<DATETIME>',
+      'node_ids': list([
+      ]),
+      'observation_type': 'todo',
+      'process_component_ids': list([
+      ]),
+      'status': 'open',
+    }),
+  ])
+# ---
+# name: test_search_multi_token_and
+  list([
+    dict({
+      'container_ids': list([
+      ]),
+      'content': 'Seed observation 1',
+      'data_item_ids': list([
+      ]),
+      'flow_ids': list([
+      ]),
+      'id': '1',
+      'last_updated': '<DATETIME>',
+      'node_ids': list([
+      ]),
+      'observation_type': 'todo',
+      'process_component_ids': list([
+      ]),
+      'status': 'open',
+    }),
+  ])
+# ---
+# name: test_search_text_plus_filters_and_combined
+  list([
+    dict({
+      'container_ids': list([
+      ]),
+      'content': 'todo X',
+      'data_item_ids': list([
+      ]),
+      'flow_ids': list([
+      ]),
+      'id': '1',
+      'last_updated': '<DATETIME>',
+      'node_ids': list([
+      ]),
+      'observation_type': 'todo',
+      'process_component_ids': list([
+      ]),
+      'status': 'open',
+    }),
+  ])
+# ---
+# name: test_update_returns_full_row
+  dict({
+    'container_ids': list([
+    ]),
+    'content': 'Seed observation 1',
+    'data_item_ids': list([
+    ]),
+    'flow_ids': list([
+    ]),
+    'id': '1',
+    'last_updated': '<DATETIME>',
+    'node_ids': list([
+    ]),
+    'observation_type': 'todo',
+    'process_component_ids': list([
+    ]),
+    'status': 'closed',
+  })
+# ---

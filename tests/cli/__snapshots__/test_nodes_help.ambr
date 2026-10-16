@@ -1,0 +1,345 @@
+# serializer version: 1
+# name: test_help_snapshots[clear-parent]
+  '''
+  Usage: cli node clear-parent [OPTIONS] NODE_ID
+  
+    Remove ``node_id`` from any container.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[create-data-store]
+  '''
+  Usage: cli node create data-store [OPTIONS]
+  
+    Create a data store node.
+  
+  Options:
+    --name TEXT
+    --description TEXT
+    --storage-type [database|cache|file|queue|bucket]
+    --contains-pii / --no-contains-pii
+    --encryption-at-rest / --no-encryption-at-rest
+    --stdin
+    --if-not-exists
+    --dry-run
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[create-external-entity]
+  '''
+  Usage: cli node create external-entity [OPTIONS]
+  
+    Create an external entity node.
+  
+  Options:
+    --name TEXT
+    --description TEXT
+    --entity-type [user|service|system|device]
+    --out-of-scope / --no-out-of-scope
+                                    Set the out_of_scope flag (default False if
+                                    neither flag given).
+    --stdin
+    --if-not-exists
+    --dry-run
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[create-process]
+  '''
+  Usage: cli node create process [OPTIONS]
+  
+    Create a process node.
+  
+  Options:
+    --name TEXT
+    --description TEXT
+    --trust-level [public|authenticated|admin|system]
+    --assumption TEXT               Repeatable. Each --assumption adds one item to
+                                    the assumptions list.
+    --stdin
+    --if-not-exists                 No-op for Node (no natural key); kept for
+                                    command-shape consistency.
+    --dry-run
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[create]
+  '''
+  Usage: cli node create [OPTIONS] COMMAND [ARGS]...
+  
+    Create a node of a specific variant.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  Commands:
+    data-store       Create a data store node.
+    external-entity  Create an external entity node.
+    process          Create a process node.
+  
+  '''
+# ---
+# name: test_help_snapshots[delete]
+  '''
+  Usage: cli node delete [OPTIONS] NODE_ID
+  
+  Options:
+    --yes      Skip confirmation prompt.
+    --dry-run
+    --help     Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[get]
+  '''
+  Usage: cli node get [OPTIONS] NODE_ID
+  
+  Options:
+    --json FIELDS  Comma-separated field names to include in output.
+    --help         Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[group]
+  '''
+  Usage: cli node [OPTIONS] COMMAND [ARGS]...
+  
+    Manage DFD nodes (process, external_entity, data_store).
+  
+  Options:
+    --help  Show this message and exit.
+  
+  Commands:
+    clear-parent        Remove ``node_id`` from any container.
+    create              Create a node of a specific variant.
+    delete
+    get
+    link-document       Link a document to this node.
+    link-observation    Link an observation to this node.
+    list
+    list-documents      List documents linked to this node.
+    list-observations   List observations linked to this node.
+    parent-of           Get the container that holds ``node_id``, if any.
+    search
+    set-parent          Place ``node_id`` inside the container ``container_id``.
+    unlink-document     Remove a document↔node link.
+    unlink-observation  Remove an observation↔node link.
+    update              Update a node of a specific variant.
+  
+  '''
+# ---
+# name: test_help_snapshots[link-document]
+  '''
+  Usage: cli node link-document [OPTIONS] NODE_ID DOC_ID
+  
+    Link a document to this node. Idempotent.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[link-observation]
+  '''
+  Usage: cli node link-observation [OPTIONS] NODE_ID OBS_ID
+  
+    Link an observation to this node. Idempotent.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-documents]
+  '''
+  Usage: cli node list-documents [OPTIONS] NODE_ID
+  
+    List documents linked to this node.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-observations]
+  '''
+  Usage: cli node list-observations [OPTIONS] NODE_ID
+  
+    List observations linked to this node.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list]
+  '''
+  Usage: cli node list [OPTIONS]
+  
+  Options:
+    --order [asc|desc]              Sort direction.  [default: asc]
+    --sort FIELD                    Column to sort by.  [default: id]
+    --offset INTEGER RANGE          Rows to skip from the start.  [default: 0;
+                                    x>=0]
+    --limit INTEGER RANGE           Maximum rows to return.  [default: 50;
+                                    1<=x<=10000]
+    --type [process|external_entity|data_store]
+                                    Filter to a single node variant.
+    --json FIELDS                   Comma-separated field names to include in
+                                    output.
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[parent-of]
+  '''
+  Usage: cli node parent-of [OPTIONS] NODE_ID
+  
+    Get the container that holds ``node_id``, if any.
+  
+  Options:
+    --json FIELDS  Comma-separated field names to include in output.
+    --help         Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[search]
+  '''
+  Usage: cli node search [OPTIONS] [TEXT]...
+  
+  Options:
+    --order [asc|desc]              Sort direction.  [default: asc]
+    --sort FIELD                    Column to sort by.  [default: id]
+    --offset INTEGER RANGE          Rows to skip from the start.  [default: 0;
+                                    x>=0]
+    --limit INTEGER RANGE           Maximum rows to return.  [default: 50;
+                                    1<=x<=10000]
+    --type [process|external_entity|data_store]
+    --json FIELDS                   Comma-separated field names to include in
+                                    output.
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[set-parent]
+  '''
+  Usage: cli node set-parent [OPTIONS] NODE_ID CONTAINER_ID
+  
+    Place ``node_id`` inside the container ``container_id``.
+  
+    Same diagram, no cycle.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[unlink-document]
+  '''
+  Usage: cli node unlink-document [OPTIONS] NODE_ID DOC_ID
+  
+    Remove a document↔node link. Idempotent.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[unlink-observation]
+  '''
+  Usage: cli node unlink-observation [OPTIONS] NODE_ID OBS_ID
+  
+    Remove an observation↔node link. Idempotent.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[update-data-store]
+  '''
+  Usage: cli node update data-store [OPTIONS] NODE_ID
+  
+    Update a data store node.
+  
+  Options:
+    --name TEXT
+    --description TEXT
+    --storage-type [database|cache|file|queue|bucket]
+    --contains-pii / --no-contains-pii
+    --encryption-at-rest / --no-encryption-at-rest
+    --stdin
+    --dry-run
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[update-external-entity]
+  '''
+  Usage: cli node update external-entity [OPTIONS] NODE_ID
+  
+    Update an external entity node.
+  
+  Options:
+    --name TEXT
+    --description TEXT
+    --entity-type [user|service|system|device]
+    --out-of-scope / --no-out-of-scope
+    --stdin
+    --dry-run
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[update-process]
+  '''
+  Usage: cli node update process [OPTIONS] NODE_ID
+  
+    Update a process node.
+  
+  Options:
+    --name TEXT
+    --description TEXT
+    --trust-level [public|authenticated|admin|system]
+    --assumption TEXT               Repeatable. Pass to replace the assumptions
+                                    list. Omit to leave unchanged.
+    --stdin
+    --dry-run
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[update]
+  '''
+  Usage: cli node update [OPTIONS] COMMAND [ARGS]...
+  
+    Update a node of a specific variant.
+  
+    The variant must match the row's existing type.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  Commands:
+    data-store       Update a data store node.
+    external-entity  Update an external entity node.
+    process          Update a process node.
+  
+  '''
+# ---

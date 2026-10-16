@@ -1,0 +1,108 @@
+# serializer version: 1
+# name: test_create_with_named_flags_returns_new_row
+  dict({
+    'definition': 'First letter of Greek alphabet',
+    'id': '1',
+    'last_updated': '<DATETIME>',
+    'term': 'alpha',
+  })
+# ---
+# name: test_get_returns_full_term
+  dict({
+    'definition': 'definition 1',
+    'id': '1',
+    'last_updated': '<DATETIME>',
+    'term': 'seed-term-1',
+  })
+# ---
+# name: test_if_not_exists_creates_when_absent
+  dict({
+    'created': True,
+    'definition': 'brand new',
+    'id': '1',
+    'last_updated': '<DATETIME>',
+    'term': 'fresh-term',
+  })
+# ---
+# name: test_if_not_exists_returns_existing_with_created_false
+  dict({
+    'created': False,
+    'definition': 'definition 1',
+    'id': '1',
+    'last_updated': '<DATETIME>',
+    'term': 'seed-term-1',
+  })
+# ---
+# name: test_list_documents_for_term_returns_linked_docs
+  list([
+    dict({
+      'author': 'seeder',
+      'id': '1',
+      'last_imported': '<DATETIME>',
+      'last_updated': '<DATETIME>',
+      'title': 'Seed Doc 1',
+    }),
+  ])
+# ---
+# name: test_list_returns_seeded_terms_as_ndjson
+  list([
+    dict({
+      'definition': 'definition 1',
+      'id': '1',
+      'last_updated': '<DATETIME>',
+      'term': 'seed-term-1',
+    }),
+    dict({
+      'definition': 'definition 2',
+      'id': '2',
+      'last_updated': '<DATETIME>',
+      'term': 'seed-term-2',
+    }),
+    dict({
+      'definition': 'definition 3',
+      'id': '3',
+      'last_updated': '<DATETIME>',
+      'term': 'seed-term-3',
+    }),
+  ])
+# ---
+# name: test_search_case_insensitive
+  list([
+    dict({
+      'definition': 'definition 1',
+      'id': '1',
+      'last_updated': '<DATETIME>',
+      'term': 'seed-term-1',
+    }),
+    dict({
+      'definition': 'definition 2',
+      'id': '2',
+      'last_updated': '<DATETIME>',
+      'term': 'seed-term-2',
+    }),
+    dict({
+      'definition': 'definition 3',
+      'id': '3',
+      'last_updated': '<DATETIME>',
+      'term': 'seed-term-3',
+    }),
+  ])
+# ---
+# name: test_search_multi_token_and
+  list([
+    dict({
+      'definition': 'definition 1',
+      'id': '1',
+      'last_updated': '<DATETIME>',
+      'term': 'seed-term-1',
+    }),
+  ])
+# ---
+# name: test_update_returns_updated_row
+  dict({
+    'definition': 'Updated definition',
+    'id': '1',
+    'last_updated': '<DATETIME>',
+    'term': 'seed-term-1',
+  })
+# ---

@@ -1,0 +1,128 @@
+# serializer version: 1
+# name: test_help_snapshots[create]
+  '''
+  Usage: cli diagram create [OPTIONS]
+  
+    Create a diagram. Use named flags or --stdin.
+  
+  Options:
+    --name TEXT         Diagram name.
+    --description TEXT  Diagram description.
+    --author TEXT       Diagram author.
+    --stdin             Read JSON object or array from stdin instead of named
+                        flags.
+    --if-not-exists     No-op for Diagram (no natural key); kept for consistency.
+    --dry-run           Dry-run mode.
+    --help              Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[delete]
+  '''
+  Usage: cli diagram delete [OPTIONS] DIAGRAM_ID
+  
+    Delete a diagram.
+  
+  Options:
+    --yes      Skip confirmation prompt.
+    --dry-run  Dry-run mode.
+    --help     Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[get]
+  '''
+  Usage: cli diagram get [OPTIONS] DIAGRAM_ID
+  
+    Get a diagram by id.
+  
+  Options:
+    --json FIELDS  Comma-separated field names to include in output.
+    --help         Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[group]
+  '''
+  Usage: cli diagram [OPTIONS] COMMAND [ARGS]...
+  
+    Manage DFD diagrams.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  Commands:
+    create  Create a diagram.
+    delete  Delete a diagram.
+    get     Get a diagram by id.
+    list    List diagrams.
+    push    Push the diagram to a running dfd_editor server.
+    search  Search diagrams by name, description, or author.
+    update  Update a diagram.
+  
+  '''
+# ---
+# name: test_help_snapshots[list]
+  '''
+  Usage: cli diagram list [OPTIONS]
+  
+    List diagrams.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[push]
+  '''
+  Usage: cli diagram push [OPTIONS]
+  
+    Push the diagram to a running dfd_editor server.
+  
+    Creates remotely on first push (storing the server-minted UUID locally),
+    updates remotely on subsequent pushes via that UUID. Element UUIDs are
+    deterministic — re-pushing preserves dfd_editor-side layout.
+  
+  Options:
+    --server TEXT  dfd_editor server URL (overrides $DFD_EDITOR_URL).
+    --help         Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[search]
+  '''
+  Usage: cli diagram search [OPTIONS] TEXT
+  
+    Search diagrams by name, description, or author.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[update]
+  '''
+  Usage: cli diagram update [OPTIONS] DIAGRAM_ID
+  
+    Update a diagram.
+  
+  Options:
+    --name TEXT         Diagram name.
+    --description TEXT  Diagram description.
+    --author TEXT       Diagram author.
+    --stdin             Read JSON object from stdin instead of named flags.
+    --dry-run           Dry-run mode.
+    --help              Show this message and exit.
+  
+  '''
+# ---

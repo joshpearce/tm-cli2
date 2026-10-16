@@ -1,0 +1,103 @@
+# serializer version: 1
+# name: test_create_with_named_flags
+  dict({
+    'description': 'Unsanitised user input reaches the DB.',
+    'entity_ids': list([
+    ]),
+    'id': '1',
+    'last_updated': '<DATETIME>',
+    'mitre_reference': 'T1190',
+    'observation_ids': list([
+    ]),
+    'observed_mitigations': 'Input validation in place.',
+    'rating': 'high',
+    'recommendations': 'Use parameterised queries.',
+    'scenario': 'Attacker sends malformed query',
+    'threat_catalog_id': None,
+    'title': 'SQL injection risk',
+  })
+# ---
+# name: test_get_returns_full_threat
+  dict({
+    'description': 'Compromised credentials used for initial access.',
+    'entity_ids': list([
+      '1',
+    ]),
+    'id': '1',
+    'last_updated': '<DATETIME>',
+    'mitre_reference': 'T1078',
+    'observation_ids': list([
+      '1',
+    ]),
+    'observed_mitigations': 'MFA enabled on all accounts.',
+    'rating': 'high',
+    'recommendations': 'Enforce MFA and monitor login anomalies.',
+    'scenario': 'Attacker uses compromised credentials',
+    'threat_catalog_id': '1',
+    'title': 'Valid account abuse',
+  })
+# ---
+# name: test_list_returns_seeded_threats
+  list([
+    dict({
+      'description': 'Compromised credentials used for initial access.',
+      'entity_ids': list([
+        '1',
+      ]),
+      'id': '1',
+      'last_updated': '<DATETIME>',
+      'mitre_reference': 'T1078',
+      'observation_ids': list([
+        '1',
+      ]),
+      'observed_mitigations': 'MFA enabled on all accounts.',
+      'rating': 'high',
+      'recommendations': 'Enforce MFA and monitor login anomalies.',
+      'scenario': 'Attacker uses compromised credentials',
+      'threat_catalog_id': '1',
+      'title': 'Valid account abuse',
+    }),
+  ])
+# ---
+# name: test_search
+  list([
+    dict({
+      'description': 'Compromised credentials used for initial access.',
+      'entity_ids': list([
+        '1',
+      ]),
+      'id': '1',
+      'last_updated': '<DATETIME>',
+      'mitre_reference': 'T1078',
+      'observation_ids': list([
+        '1',
+      ]),
+      'observed_mitigations': 'MFA enabled on all accounts.',
+      'rating': 'high',
+      'recommendations': 'Enforce MFA and monitor login anomalies.',
+      'scenario': 'Attacker uses compromised credentials',
+      'threat_catalog_id': '1',
+      'title': 'Valid account abuse',
+    }),
+  ])
+# ---
+# name: test_update
+  dict({
+    'description': 'Compromised credentials used for initial access.',
+    'entity_ids': list([
+      '1',
+    ]),
+    'id': '1',
+    'last_updated': '<DATETIME>',
+    'mitre_reference': 'T1078',
+    'observation_ids': list([
+      '1',
+    ]),
+    'observed_mitigations': 'MFA enabled on all accounts.',
+    'rating': 'high',
+    'recommendations': 'Enforce MFA and monitor login anomalies.',
+    'scenario': 'Attacker uses compromised credentials',
+    'threat_catalog_id': '1',
+    'title': 'Updated threat title',
+  })
+# ---

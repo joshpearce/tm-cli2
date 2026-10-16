@@ -1,0 +1,133 @@
+# serializer version: 1
+# name: test_help_snapshots[clear]
+  '''
+  Usage: cli finding clear [OPTIONS]
+  
+    Bulk-delete validation findings for a diagram (optionally filtered by source).
+  
+  Options:
+    --source TEXT  Limit clearing to findings from this source only.
+    --help         Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[create]
+  '''
+  Usage: cli finding create [OPTIONS]
+  
+    Create a validation finding. Use named flags or --stdin.
+  
+  Options:
+    --severity [error|warning]  Finding severity (error or warning).
+    --message TEXT              Finding message.
+    --source TEXT               Finding source (e.g. validator name).
+    --entity-id INTEGER         Optional DFD entity id this finding relates to.
+    --code TEXT                 Optional finding code.
+    --stdin                     Read JSON object or array from stdin instead of
+                                named flags.
+    --dry-run                   Dry-run.
+    --help                      Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[delete]
+  '''
+  Usage: cli finding delete [OPTIONS] FINDING_ID
+  
+    Delete a validation finding.
+  
+  Options:
+    --yes      Skip confirmation prompt.
+    --dry-run  Dry-run.
+    --help     Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[get]
+  '''
+  Usage: cli finding get [OPTIONS] FINDING_ID
+  
+    Get a validation finding by id.
+  
+  Options:
+    --json FIELDS  Comma-separated field names to include in output.
+    --help         Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[group]
+  '''
+  Usage: cli finding [OPTIONS] COMMAND [ARGS]...
+  
+    Manage validation findings.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  Commands:
+    clear   Bulk-delete validation findings for a diagram (optionally...
+    create  Create a validation finding.
+    delete  Delete a validation finding.
+    get     Get a validation finding by id.
+    list    List validation findings in a diagram (defaults to the 'default'...
+    search  Search validation findings by message or code.
+    update  Apply a partial update to a validation finding.
+  
+  '''
+# ---
+# name: test_help_snapshots[list]
+  '''
+  Usage: cli finding list [OPTIONS]
+  
+    List validation findings in a diagram (defaults to the 'default' diagram).
+  
+  Options:
+    --order [asc|desc]          Sort direction.  [default: asc]
+    --sort FIELD                Column to sort by.  [default: id]
+    --offset INTEGER RANGE      Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE       Maximum rows to return.  [default: 50;
+                                1<=x<=10000]
+    --severity [error|warning]  Filter to findings with this severity.
+    --source TEXT               Filter to findings from this source.
+    --json FIELDS               Comma-separated field names to include in output.
+    --help                      Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[search]
+  '''
+  Usage: cli finding search [OPTIONS] [TEXT]...
+  
+    Search validation findings by message or code.
+  
+  Options:
+    --order [asc|desc]          Sort direction.  [default: asc]
+    --sort FIELD                Column to sort by.  [default: id]
+    --offset INTEGER RANGE      Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE       Maximum rows to return.  [default: 50;
+                                1<=x<=10000]
+    --severity [error|warning]  Filter to findings with this severity.
+    --source TEXT               Filter to findings from this source.
+    --json FIELDS               Comma-separated field names to include in output.
+    --help                      Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[update]
+  '''
+  Usage: cli finding update [OPTIONS] FINDING_ID
+  
+    Apply a partial update to a validation finding.
+  
+  Options:
+    --severity [error|warning]  Finding severity (error or warning).
+    --message TEXT              Finding message.
+    --source TEXT               Finding source.
+    --code TEXT                 Finding code, or 'none'/'' to clear.
+    --stdin                     Read JSON object from stdin instead of named
+                                flags.
+    --dry-run                   Dry-run.
+    --help                      Show this message and exit.
+  
+  '''
+# ---

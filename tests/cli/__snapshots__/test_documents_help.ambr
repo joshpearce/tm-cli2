@@ -1,0 +1,226 @@
+# serializer version: 1
+# name: test_help_snapshots[create]
+  '''
+  Usage: cli document create [OPTIONS]
+  
+    Create a document. Use named flags or ``--stdin``.
+  
+  Options:
+    --last-updated [%Y-%m-%d|%Y-%m-%dT%H:%M:%S|%Y-%m-%d %H:%M:%S]
+                                    ISO-8601 datetime of source author's last
+                                    update. Defaults to now.
+    --title TEXT                    Document title.
+    --author TEXT                   Document author.
+    --content TEXT                  Full document body.
+    --stdin                         Read JSON object or array from stdin instead
+                                    of named flags.
+    --if-not-exists                 No-op for Document (no natural key); kept for
+                                    consistency.
+    --dry-run                       Validate inputs, do not write.
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[delete]
+  '''
+  Usage: cli document delete [OPTIONS] DOC_ID
+  
+    Delete a document (idempotent: missing id returns ``deleted=false``).
+  
+  Options:
+    --yes      Required to confirm deletion (matches design contract).
+    --dry-run
+    --help     Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[get]
+  '''
+  Usage: cli document get [OPTIONS] DOC_ID
+  
+    Fetch a single document by id (returns full content).
+  
+  Options:
+    --json FIELDS  Comma-separated field names to include in output.
+    --help         Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[group]
+  '''
+  Usage: cli document [OPTIONS] COMMAND [ARGS]...
+  
+    Manage documents (source artifacts: threat-model reports, design docs).
+  
+  Options:
+    --help  Show this message and exit.
+  
+  Commands:
+    create           Create a document.
+    delete           Delete a document (idempotent: missing id returns...
+    get              Fetch a single document by id (returns full content).
+    link-term        Link a term to a document.
+    list             List documents (without ``content`` blobs).
+    list-containers  List containers linked to a document.
+    list-flows       List flows linked to a document.
+    list-items       List data items linked to a document.
+    list-nodes       List nodes linked to a document.
+    list-terms       List terms linked to a document.
+    search           Full-text search across title, author, and content.
+    unlink-term      Remove a document↔term link.
+    update           Apply a partial update to a document.
+  
+  '''
+# ---
+# name: test_help_snapshots[link-term]
+  '''
+  Usage: cli document link-term [OPTIONS] DOC_ID TERM_ID
+  
+    Link a term to a document. Idempotent: returns linked=false if already linked.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-containers]
+  '''
+  Usage: cli document list-containers [OPTIONS] DOC_ID
+  
+    List containers linked to a document.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-flows]
+  '''
+  Usage: cli document list-flows [OPTIONS] DOC_ID
+  
+    List flows linked to a document.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-items]
+  '''
+  Usage: cli document list-items [OPTIONS] DOC_ID
+  
+    List data items linked to a document.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-nodes]
+  '''
+  Usage: cli document list-nodes [OPTIONS] DOC_ID
+  
+    List nodes linked to a document.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-terms]
+  '''
+  Usage: cli document list-terms [OPTIONS] DOC_ID
+  
+    List terms linked to a document.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list]
+  '''
+  Usage: cli document list [OPTIONS]
+  
+    List documents (without ``content`` blobs).
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[search]
+  '''
+  Usage: cli document search [OPTIONS] TEXT
+  
+    Full-text search across title, author, and content.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[unlink-term]
+  '''
+  Usage: cli document unlink-term [OPTIONS] DOC_ID TERM_ID
+  
+    Remove a document↔term link. Idempotent: returns unlinked=false if not linked.
+  
+  Options:
+    --help  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[update]
+  '''
+  Usage: cli document update [OPTIONS] DOC_ID
+  
+    Apply a partial update to a document.
+  
+  Options:
+    --last-updated [%Y-%m-%d|%Y-%m-%dT%H:%M:%S|%Y-%m-%d %H:%M:%S]
+    --title TEXT
+    --author TEXT
+    --content TEXT
+    --stdin                         Read a JSON object from stdin with the patch
+                                    fields.
+    --dry-run
+    --help                          Show this message and exit.
+  
+  '''
+# ---

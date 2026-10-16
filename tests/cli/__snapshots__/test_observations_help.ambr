@@ -1,0 +1,191 @@
+# serializer version: 1
+# name: test_help_snapshots[create]
+  '''
+  Usage: cli observation create [OPTIONS]
+  
+    Create an observation.
+  
+  Options:
+    --content TEXT
+    --observation-type [potential_threat|incomplete_information|question|todo]
+    --status [open|closed]
+    --stdin
+    --if-not-exists                 No-op for Observation (no natural key); kept
+                                    for command-shape consistency.
+    --dry-run
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[delete]
+  '''
+  Usage: cli observation delete [OPTIONS] OBS_ID
+  
+    Delete an observation (idempotent).
+  
+  Options:
+    --yes
+    --dry-run
+    --help     Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[get]
+  '''
+  Usage: cli observation get [OPTIONS] OBS_ID
+  
+    Fetch an observation by id.
+  
+  Options:
+    --json FIELDS  Comma-separated field names to include in output.
+    --help         Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[group]
+  '''
+  Usage: cli observation [OPTIONS] COMMAND [ARGS]...
+  
+    Manage threat-model observations (todos, questions, threats).
+  
+  Options:
+    --help  Show this message and exit.
+  
+  Commands:
+    create           Create an observation.
+    delete           Delete an observation (idempotent).
+    get              Fetch an observation by id.
+    list             List observations.
+    list-containers  List containers linked to an observation.
+    list-flows       List flows linked to an observation.
+    list-items       List data items linked to an observation.
+    list-nodes       List nodes linked to an observation.
+    search           Full-text search over content; combine with type/status...
+    update           Apply a partial update to an observation.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-containers]
+  '''
+  Usage: cli observation list-containers [OPTIONS] OBS_ID
+  
+    List containers linked to an observation.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-flows]
+  '''
+  Usage: cli observation list-flows [OPTIONS] OBS_ID
+  
+    List flows linked to an observation.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-items]
+  '''
+  Usage: cli observation list-items [OPTIONS] OBS_ID
+  
+    List data items linked to an observation.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list-nodes]
+  '''
+  Usage: cli observation list-nodes [OPTIONS] OBS_ID
+  
+    List nodes linked to an observation.
+  
+  Options:
+    --order [asc|desc]      Sort direction.  [default: asc]
+    --sort FIELD            Column to sort by.  [default: id]
+    --offset INTEGER RANGE  Rows to skip from the start.  [default: 0; x>=0]
+    --limit INTEGER RANGE   Maximum rows to return.  [default: 50; 1<=x<=10000]
+    --json FIELDS           Comma-separated field names to include in output.
+    --help                  Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[list]
+  '''
+  Usage: cli observation list [OPTIONS]
+  
+    List observations.
+  
+  Options:
+    --order [asc|desc]              Sort direction.  [default: asc]
+    --sort FIELD                    Column to sort by.  [default: id]
+    --offset INTEGER RANGE          Rows to skip from the start.  [default: 0;
+                                    x>=0]
+    --limit INTEGER RANGE           Maximum rows to return.  [default: 50;
+                                    1<=x<=10000]
+    --status [open|closed]          Filter by status.
+    --observation-type [potential_threat|incomplete_information|question|todo]
+                                    Filter by observation type.
+    --json FIELDS                   Comma-separated field names to include in
+                                    output.
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[search]
+  '''
+  Usage: cli observation search [OPTIONS] [TEXT]...
+  
+    Full-text search over content; combine with type/status filters.
+  
+  Options:
+    --order [asc|desc]              Sort direction.  [default: asc]
+    --sort FIELD                    Column to sort by.  [default: id]
+    --offset INTEGER RANGE          Rows to skip from the start.  [default: 0;
+                                    x>=0]
+    --limit INTEGER RANGE           Maximum rows to return.  [default: 50;
+                                    1<=x<=10000]
+    --status [open|closed]          Filter by status.
+    --observation-type [potential_threat|incomplete_information|question|todo]
+                                    Filter by observation type.
+    --json FIELDS                   Comma-separated field names to include in
+                                    output.
+    --help                          Show this message and exit.
+  
+  '''
+# ---
+# name: test_help_snapshots[update]
+  '''
+  Usage: cli observation update [OPTIONS] OBS_ID
+  
+    Apply a partial update to an observation.
+  
+  Options:
+    --content TEXT
+    --observation-type [potential_threat|incomplete_information|question|todo]
+    --status [open|closed]
+    --stdin
+    --dry-run
+    --help                          Show this message and exit.
+  
+  '''
+# ---

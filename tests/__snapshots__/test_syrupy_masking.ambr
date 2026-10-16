@@ -1,0 +1,21 @@
+# serializer version: 1
+# name: test_dict_with_id_and_datetime_is_masked
+  dict({
+    'created': '<DATETIME>',
+    'id': '<INT>',
+    'name': 'static',
+    'nested': dict({
+      'item_id': '<INT>',
+      'label': 'static',
+    }),
+    'rows': list([
+      dict({
+        'id': '<INT>',
+      }),
+      dict({
+        'id': '<INT>',
+      }),
+    ]),
+    'user_id': '<INT>',
+  })
+# ---
